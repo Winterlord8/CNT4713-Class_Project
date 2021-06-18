@@ -1,6 +1,8 @@
-# import os
-# os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-# os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
+import os
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
+
+# implement other auth method
 
 import cv2
 from flask import Flask, redirect, url_for, render_template, Response
@@ -10,7 +12,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
 camera = cv2.VideoCapture(0)
 
-blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', scope=['profile', 'email'])
+blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', offline=True, scope=['profile', 'email'])
 
 app.register_blueprint(blueprint, url_prefix='/login')
 
@@ -18,7 +20,11 @@ app.register_blueprint(blueprint, url_prefix='/login')
 @app.route('/')
 def index():
     if google.authorized:
-        return render_template('main_page.html')
+        resp = google.get('/oauth2/v2/userinfo')
+        assert resp.ok, resp.text
+        name = resp.json()['name']
+
+        return render_template('main_page.html', name=name)
     else:
         return render_template('home.html')
 
