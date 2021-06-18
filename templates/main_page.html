@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Welcome {{name}}!!</h1>
+  <p>Please select to see a static feed or live feed:</p>
+  <li>
+    <a href="{{url_for('static_feed')}}">Static Feed</a>
+  </li>
+  <li>
+    <a href="{{url_for('live_feed')}}">Live Feed</a>
+  </li>
+</div>
+
+{% endblock %}
