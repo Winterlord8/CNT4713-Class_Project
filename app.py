@@ -11,7 +11,7 @@ from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
-socketio = SocketIO(app)
+# socketio = SocketIO(app)
 camera = cv2.VideoCapture(0)
 
 # blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', offline=True scope=['profile', 'email'])
@@ -95,4 +95,4 @@ def live_feed():
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='')
+    app.run()
