@@ -1,21 +1,22 @@
-import os
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
+# import os
+# os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+# os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
 
 # implement other auth method
 
 import cv2
 from flask import Flask, redirect, url_for, render_template, Response
+from flask_socketio import SocketIO
 from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
+socketio = SocketIO(app)
 camera = cv2.VideoCapture(0)
 
-blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', offline=True, scope=['profile', 'email'])
+blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', scope=['profile', 'email'])
 
-app.register_blueprint(blueprint, url_prefix='/login')
-
+socketio.register_blueprint(blueprint, url_prefix='/login')
 
 @app.route('/')
 def index():
@@ -76,4 +77,4 @@ def login():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, host="0.0.0.0", port="8080")
