@@ -2,7 +2,6 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
 
-# implement other auth method
 
 import cv2
 from flask import Flask, redirect, url_for, render_template, Response
@@ -14,32 +13,20 @@ app.config['SECRET_KEY'] = 'mysecret'
 socketio = SocketIO(app)
 camera = cv2.VideoCapture(0)
 
-blueprint = make_google_blueprint(client_id='56700923608-25b89qud8ep7svm3qmk5t02sa53nuh4c.apps.googleusercontent.com', client_secret='sxZ9mO1zD4wS80PPKzgNEkD-', offline=False, scope=['profile', 'email'])
+blueprint = make_google_blueprint(client_id='56700923608-419gana0ifh33r7od61sj5daa5b9b7es.apps.googleusercontent.com', client_secret='FBY5R9NwU_3BXrX4yQ3oNH4F', scope=['profile', 'email'])
 
 app.register_blueprint(blueprint, url_prefix='/login')
 
-# login_manager = LoginManager()
-#
-# login_manager.login_view = "login"
-#
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         return redirect('main_page.html')
-#     else:
-#         render_template('login')
 
 @app.route('/')
 def index():
     # return render_template("main_page.html")
     if google.authorized:
-        # resp = google.get('/oauth2/v2/userinfo')
-        # assert resp.ok, resp.text
-        # name = resp.json()['name']
+        resp = google.get('/oauth2/v2/userinfo')
+        assert resp.ok, resp.text
+        name = resp.json()['name']
 
-        return render_template('main_page.html')
+        return render_template('main_page.html', name=name)
     else:
         return render_template('home.html')
 
