@@ -17,4 +17,3 @@ setuptools==52.0.0
 Werkzeug==2.0.1
 wheel==0.36.2
 wincertstore==0.2
-libgl1
