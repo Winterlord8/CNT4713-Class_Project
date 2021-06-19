@@ -95,4 +95,4 @@ def live_feed():
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='', port='80')
+    socketio.run(app, host='')
