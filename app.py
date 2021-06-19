@@ -7,16 +7,16 @@
 import cv2
 from flask import Flask, redirect, url_for, render_template, Response
 from flask_socketio import SocketIO
-# from flask_dance.contrib.google import make_google_blueprint, google
+from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
-# socketio = SocketIO(app)
+socketio = SocketIO(app)
 camera = cv2.VideoCapture(0)
 
-# blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', offline=True scope=['profile', 'email'])
+blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', scope=['profile', 'email'])
 
-# app.register_blueprint(blueprint, url_prefix='/login')
+app.register_blueprint(blueprint, url_prefix='/login')
 
 # login_manager = LoginManager()
 #
@@ -33,26 +33,26 @@ camera = cv2.VideoCapture(0)
 
 @app.route('/')
 def index():
-    return render_template("main_page.html")
-    # if google.authorized:
-    #     resp = google.get('/oauth2/v2/userinfo')
-    #     assert resp.ok, resp.text
-    #     name = resp.json()['name']
-    #
-    #     return render_template('main_page.html', name=name)
-    # else:
-    #     return render_template('home.html')
+    # return render_template("main_page.html")
+    if google.authorized:
+        resp = google.get('/oauth2/v2/userinfo')
+        assert resp.ok, resp.text
+        name = resp.json()['name']
+
+        return render_template('main_page.html', name=name)
+    else:
+        return render_template('home.html')
 
 
 @app.route('/static_feed')
 def static_feed():
 
-    return render_template('staticfeed.html')
-        # resp = google.get('/oauth2/v2/userinfo')
-        # assert resp.ok, resp.text
-        # name = resp.json()['name']
-        #
-        # return render_template('staticfeed.html', name=name)
+    # return render_template('staticfeed.html')
+    resp = google.get('/oauth2/v2/userinfo')
+    assert resp.ok, resp.text
+    name = resp.json()['name']
+
+    return render_template('staticfeed.html', name=name)
 
 
 def gen_frames():
@@ -75,23 +75,23 @@ def video_feed():
 @app.route('/live_feed')
 def live_feed():
 
-    return render_template('live_feed.html')
-    # resp = google.get('/oauth2/v2/userinfo')
-    # assert resp.ok, resp.text
-    # name = resp.json()['name']
-    #
-    # return render_template('live_feed.html', name=name)
+    # return render_template('live_feed.html')
+    resp = google.get('/oauth2/v2/userinfo')
+    assert resp.ok, resp.text
+    name = resp.json()['name']
+
+    return render_template('live_feed.html', name=name)
 
 
-# @app.route('/login/google')
-# def login():
-#     if not google.authorized:
-#         return render_template(url_for('google.login'))
-#     resp = google.get('/oauth2/v2/userinfo')
-#     assert resp.ok, resp.text
-#     name = resp.json()['name']
-#
-#     return redirect('main_page.html', name=name)
+@app.route('/login/google')
+def login():
+    if not google.authorized:
+        return render_template(url_for('google.login'))
+    resp = google.get('/oauth2/v2/userinfo')
+    assert resp.ok, resp.text
+    name = resp.json()['name']
+
+    return redirect('main_page.html', name=name)
 
 
 if __name__ == '__main__':
