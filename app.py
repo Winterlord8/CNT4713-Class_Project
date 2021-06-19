@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'mysecret'
 socketio = SocketIO(app)
 camera = cv2.VideoCapture(0)
 
-blueprint = make_google_blueprint(client_id='56700923608-f692rhb11m2qrp8csahn298g2ri3qq5q.apps.googleusercontent.com', client_secret='yesM8mmWGcCMlnFkOzYD8G7g', scope=['profile', 'email'])
+blueprint = make_google_blueprint(client_id='56700923608-25b89qud8ep7svm3qmk5t02sa53nuh4c.apps.googleusercontent.com', client_secret='sxZ9mO1zD4wS80PPKzgNEkD-', scope=['profile', 'email'])
 
 app.register_blueprint(blueprint, url_prefix='/login')
 
