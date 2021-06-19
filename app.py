@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'mysecret'
 socketio = SocketIO(app)
 camera = cv2.VideoCapture(0)
 
-blueprint = make_google_blueprint(client_id='56700923608-25b89qud8ep7svm3qmk5t02sa53nuh4c.apps.googleusercontent.com', client_secret='sxZ9mO1zD4wS80PPKzgNEkD-', scope=['profile', 'email'])
+blueprint = make_google_blueprint(client_id='56700923608-25b89qud8ep7svm3qmk5t02sa53nuh4c.apps.googleusercontent.com', client_secret='sxZ9mO1zD4wS80PPKzgNEkD-', offline=False, scope=['profile', 'email'])
 
 app.register_blueprint(blueprint, url_prefix='/login')
 
@@ -35,11 +35,11 @@ app.register_blueprint(blueprint, url_prefix='/login')
 def index():
     # return render_template("main_page.html")
     if google.authorized:
-        resp = google.get('/oauth2/v2/userinfo')
-        assert resp.ok, resp.text
-        name = resp.json()['name']
+        # resp = google.get('/oauth2/v2/userinfo')
+        # assert resp.ok, resp.text
+        # name = resp.json()['name']
 
-        return render_template('main_page.html', name=name)
+        return render_template('main_page.html')
     else:
         return render_template('home.html')
 
