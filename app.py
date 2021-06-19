@@ -95,4 +95,4 @@ def login():
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='')
+    socketio.run(app)
