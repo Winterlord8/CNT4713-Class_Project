@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
   <div class="jumbotron">
-    <h1>WEBCAM FEED</h1>
+    <h1>Hello {{name}}, Here's the webcam feed</h1>
     <p>My ugly mug LIVE!</p>
     <img src="{{url_for('video_feed')}}" width="50%">
   </div>
