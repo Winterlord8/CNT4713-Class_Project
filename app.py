@@ -3,15 +3,11 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
 
 
-import cv2
 from flask import Flask, redirect, url_for, render_template, Response
-from flask_socketio import SocketIO
 from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
-socketio = SocketIO(app)
-camera = cv2.VideoCapture(0)
 
 blueprint = make_google_blueprint(client_id='56700923608-419gana0ifh33r7od61sj5daa5b9b7es.apps.googleusercontent.com', client_secret='FBY5R9NwU_3BXrX4yQ3oNH4F', scope=['profile', 'email'])
 
@@ -42,23 +38,6 @@ def static_feed():
     return render_template('staticfeed.html', name=name)
 
 
-def gen_frames():
-    while True:
-        success, frame = camera.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
-
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
 @app.route('/live_feed')
 def live_feed():
 
@@ -82,4 +61,4 @@ def login():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    app.run(debug=True)
