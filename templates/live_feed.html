@@ -3,6 +3,10 @@
   <div class="jumbotron">
     <h1>Hello {{name}}, Here's the webcam feed</h1>
     <p>My ugly mug LIVE!</p>
-    <img src="{{url_for('video_feed')}}" width="50%">
+    <div class="conainer">
+       <div class="streamContainer">
+           <video id="stream" src="http://markojudas.ngrok.io/stream.ogg" type="video/ogg; codecs=theora" autoplay="autoplay" />
+       </div>
+   </div>
   </div>
 {% endblock %}
