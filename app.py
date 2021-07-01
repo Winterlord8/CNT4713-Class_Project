@@ -1,7 +1,7 @@
 #   import and setting the environment for local testing
-import os
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
+# import os
+# os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+# os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
 
 from flask import Flask, redirect, url_for, render_template, Response
 from flask_dance.contrib.google import make_google_blueprint, google
