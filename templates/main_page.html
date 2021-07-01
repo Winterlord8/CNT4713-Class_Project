@@ -3,11 +3,9 @@
 <div class="jumbotron">
   <h1>Hello {{name}}!</h1>
   <p>Please select to see a static feed or live feed:</p>
-  <ul style="list-style-type:none;">
-    <li><a class="btn btn-primary" href="{{url_for('static_feed')}}" role="button">Static Feed</a></li>
-    <br>
-    <li><a class="btn btn-primary" href="{{url_for('live_feed')}}" role="button">Live Feed</a></li>
-  </ul>
+  <a class="btn btn-primary" href="{{url_for('static_feed')}}" role="button">Static Feed</a>
+  <br><br>
+  <a class="btn btn-primary" href="{{url_for('live_feed')}}" role="button">Live Feed</a>
 </div>
 
 {% endblock %}
