@@ -1,5 +1,5 @@
-#	CNT 4713 Net-Centric Computing Class Project
 <p align="center">
+	#	CNT 4713 Net-Centric Computing Class Project
 	<img src="./static/ClassLogo.png" alt="CNT4713 LOGO" />
 </p>
 
@@ -33,5 +33,8 @@ Web Development using the Flask Framework.
 
 <h6>Please note that this is not the best solution but most of these concepts were alien to me at the start of the project.</h6>
 	
+<h5>Step 1: Step Your Python Environment</h5>
+<br>
+
 
 
