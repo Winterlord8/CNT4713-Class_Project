@@ -1,5 +1,5 @@
+#	CNT 4713 Net-Centric Computing Class Project
 <p align="center">
-	#	CNT 4713 Net-Centric Computing Class Project
 	<img src="./static/ClassLogo.png" alt="CNT4713 LOGO" />
 </p>
 
