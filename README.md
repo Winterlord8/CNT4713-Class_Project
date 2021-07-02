@@ -35,7 +35,7 @@ Web Development using the Flask Framework.
 
 <h5>Step 1: Step Your Python Environment</h5>
 <br>
-<li>Download and install <a href="https://www.anaconda.com/">Ananconda</a></li>
+Download and install <a href="https://www.anaconda.com/">Ananconda</a>
 
 After you download and install Ananconda, create a Python environement. Open your command prompt (Windows Key + r -> cmd)
 and type the following: (you can replace "webstream" by whatever you wish)
