@@ -81,10 +81,5 @@ Once you have created a new Client ID through Google please open "app.py" file w
 Leave the other parameters as they are.
 
 ```
-	blueprint = make_google_blueprint(
-																	client_id='INSERT-YOUR-CLIENT_ID-HERE',
-																	client_secret='INSERT-YOUR-client_secret-HERE',
-																	...
-																	...
-																	)
+	blueprint = make_google_blueprint(client_id='INSERT-YOUR-CLIENT_ID-HERE', client_secret='INSERT-YOUR-client_secret-HERE',...)
 ```
