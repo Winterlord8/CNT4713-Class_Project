@@ -41,7 +41,7 @@ After you download and install Ananconda, create a Python environement. Open you
 and type the following: (you can replace "webstream" by whatever you wish)
 
 ```
-	conda create -n webstream flask
+conda create -n webstream flask
 ```
 
 This will start creating the environment and install the <a href="https://flask-doc.readthedocs.io/en/latest/"> Flask Framework </a>.
@@ -49,7 +49,7 @@ It will ask for your input to install other dependencies; enter 'y' to proceed. 
 you how to activate (and deactivate) the environment. Type the command:
 
 ```
-	conda activate webstream
+conda activate webstream
 ```
 
 <h5>Step 2: Download the requirements</h5>
@@ -58,13 +58,13 @@ All the dependcies needed for this all to work are on the requirements.txt file.
 where you downloaded this project (the root directory of project).
 
 ```
-	cd <path to project>
+cd <path to project>
 ```
 
 then type the following command:
 
 ```
-	pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 This will install everything.
@@ -81,5 +81,5 @@ Once you have created a new Client ID through Google please open "app.py" file w
 Leave the other parameters as they are.
 
 ```
-	blueprint = make_google_blueprint(client_id='INSERT-YOUR-CLIENT_ID-HERE', client_secret='INSERT-YOUR-client_secret-HERE',...)
+blueprint = make_google_blueprint(client_id='INSERT-YOUR-CLIENT_ID-HERE', client_secret='INSERT-YOUR-client_secret-HERE',...)
 ```
