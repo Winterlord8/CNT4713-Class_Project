@@ -1,6 +1,6 @@
 #	CNT 4713 Net-Centric Computing Class Project
 <p align="center">
-	<img src="./static/ClassLogo.png" alt="CNT4713 LOGO" />
+<img src="./static/ClassLogo.png" alt="CNT4713 LOGO" />
 </p>
 
 This is a simple web application where I am hosting a static & live feed.
@@ -29,11 +29,11 @@ Web Development using the Flask Framework.
 <br>
 <a href="https://www.udemy.com/share/101Wai2@Pm1gbFlSTlQGdUBAEmJOVD1HYA==/">Udemy: Learn Python Programming Masterclass</a>
 
-#	Installation
+#	Set-up
 
 <h6>Please note that this is not the best solution but most of these concepts were alien to me at the start of the project.</h6>
 
-<h5>Step 1: Step Your Python Environment</h5>
+<h2>Step 1: Step Your Python Environment</h2>
 <br>
 Download and install <a href="https://www.anaconda.com/">Ananconda</a>
 
@@ -52,10 +52,12 @@ you how to activate (and deactivate) the environment. Type the command:
 conda activate webstream
 ```
 
-<h5>Step 2: Download the requirements</h5>
+<h2>Step 2: Download the requirements</h2>
 
 All the dependcies needed for this all to work are on the requirements.txt file. To install them, through your command prompt, you have to change to the directory
 where you downloaded this project (the root directory of project).
+
+Note: Please make sure you have activated the environment
 
 ```
 cd <path to project>
@@ -70,7 +72,7 @@ pip install -r requirements.txt
 This will install everything.
 
 
-<h5>Step 3: Set-up the Flask_Dance to Connect the Google OAuth Client</h5>
+<h2>Step 3: Set-up the Flask_Dance to Connect the Google OAuth Client</h2>
 
 if you wish to learn more about Flask Dance, you can always read the <a href="https://flask-dance.readthedocs.io/en/latest/">docs</a>
 <br>
@@ -83,3 +85,24 @@ Leave the other parameters as they are.
 ```
 blueprint = make_google_blueprint(client_id='INSERT-YOUR-CLIENT_ID-HERE', client_secret='INSERT-YOUR-client_secret-HERE',...)
 ```
+
+# Run Locally
+
+At this point the application should be able to run locally. Run the following command (make sure you have activated the environment):
+
+Windows:
+```
+python app.py
+```
+
+Linux/macOS:
+```
+python3 app.py
+```
+
+Output:
+<p align="center">
+<img src="./static/outputexample.png" alt="Output Example" />
+</p>
+
+Open your preferred browser and go to the URL from your output.
