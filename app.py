@@ -10,8 +10,8 @@ app.config['SECRET_KEY'] = 'mysecret'
 
 # setting up the google blueprint & registring it
 blueprint = make_google_blueprint(
-                            client_id='INSERT-YOUR-CLIENT_ID-HERE',
-                            client_secret='INSERT-YOUR-client_secret-HERE',
+                            client_id='253662841042-17f64moafdsis05ae3cdp0o5lms1eaar.apps.googleusercontent.com',
+                            client_secret='8OcTgsZrCCtPifp1kUz7_nOQ',
                             reprompt_consent=True,
                             # offline=True,
                             scope=['profile', 'email']
